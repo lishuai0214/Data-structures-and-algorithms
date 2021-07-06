@@ -1,6 +1,7 @@
 package Algorithms;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class BubbleSortList {
@@ -22,6 +23,9 @@ public class BubbleSortList {
                     arr.set(j + 1, tmp);
 
                     flag = false;
+
+                    System.out.println(String.format("%s order: %s", i, arr));
+
                 }
             }
 

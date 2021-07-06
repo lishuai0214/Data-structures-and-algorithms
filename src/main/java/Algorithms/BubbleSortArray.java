@@ -18,6 +18,8 @@ public class BubbleSortArray {
                     arr[j + 1] = tmp;
 
                     flag = false;
+
+                    System.out.println(String.format("%s order: %s", i, Arrays.toString(arr)));
                 }
             }
 
