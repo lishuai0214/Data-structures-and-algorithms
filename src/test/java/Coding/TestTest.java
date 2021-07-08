@@ -1,12 +1,25 @@
 package Coding;
 
+import Algorithms.ListCycle;
+import Entity.ListNode;
 import Entity.TreeNode;
 import Utils.TreeOperation;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class TestTest {
     static TreeNode root = null;
+    private static List<Integer> preList = new ArrayList<>();
+    private static List<Integer> midList = new ArrayList<>();
+    private static List<Integer> rightList = new ArrayList<>();
+    int[][] result;
+
+    private static int lenght = 0;
+    private static int count = 0;
 
     @BeforeClass
     public static void binTreeInit(){
@@ -31,14 +44,35 @@ public class TestTest {
     }
 
     public int[][] threeOrders (TreeNode root) {
+
         // write code here
+        treeCount(root);
+        result = new int[3][lenght];
+
+        count = 0;
+        preOrder(root);
+        count = 0;
         midOrder(root);
-        return null;
+        count = 0;
+        rightOrder(root);
+        System.out.println(Arrays.toString(result[0]));
+        System.out.println(Arrays.toString(result[1]));
+        System.out.println(Arrays.toString(result[2]));
+        return result;
+    }
+
+    private void treeCount(TreeNode root){
+        if (root != null) {
+            lenght++;
+            treeCount(root.left);
+            treeCount(root.right);
+        }
     }
 
     private void preOrder(TreeNode root){
         if (root != null) {
             System.out.println(root.data);
+            result[0][count++]=(root.data);
             preOrder(root.left);
             preOrder(root.right);
         }
@@ -48,6 +82,7 @@ public class TestTest {
         if (root != null) {
             midOrder(root.left);
             System.out.println(root.data);
+            result[1][count++]=(root.data);
             midOrder(root.right);
         }
     }
@@ -57,6 +92,7 @@ public class TestTest {
             rightOrder(root.left);
             rightOrder(root.right);
             System.out.println(root.data);
+            result[2][count++]=(root.data);
         }
     }
 }
