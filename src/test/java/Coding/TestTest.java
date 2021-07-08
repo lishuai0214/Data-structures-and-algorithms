@@ -1,7 +1,5 @@
 package Coding;
 
-import Algorithms.ListCycle;
-import Entity.ListNode;
 import Entity.TreeNode;
 import Utils.TreeOperation;
 import org.junit.BeforeClass;
@@ -93,6 +91,34 @@ public class TestTest {
             rightOrder(root.right);
             System.out.println(root.data);
             result[2][count++]=(root.data);
+        }
+    }
+
+    @Test
+    public void testtest(){
+        int resulttest = firstBadVersion(99);
+        System.out.println(resulttest);
+    }
+
+    public int firstBadVersion(int n) {
+        int left=1,right=n;
+        while (right > left){
+            int mid = left + (right - left) / 2;
+            if (isBadVersion(mid)){
+                right = mid;
+            }else {
+                left = mid + 1;
+            }
+        }
+
+        return right;
+    }
+
+    public boolean isBadVersion(int i){
+        if (i > 8){
+            return true;
+        }else {
+            return false;
         }
     }
 }
