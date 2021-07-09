@@ -25,4 +25,20 @@ public class BinarySearchList {
         }
         return -1;
     }
+
+    public static int binarySearch1(List<Integer> numArray, Integer n) {
+        Integer left=0, right = numArray.size()-1;
+        while (right >= left){
+            Integer mid = left + (right-left)/2;
+            if (numArray.get(mid).compareTo(n) == 0){
+                return mid;
+            }else if (numArray.get(mid).compareTo(n) > 0){
+                right = mid - 1;
+            }else if (numArray.get(mid).compareTo(n) < 0){
+                left = mid + 1;
+            }
+        }
+
+        return -1;
+    }
 }
