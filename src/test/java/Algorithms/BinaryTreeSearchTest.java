@@ -35,4 +35,13 @@ public class BinaryTreeSearchTest {
         binaryTreeSearch.preSearch(root);
         assertTrue( true );
     }
+
+    @Test
+    public void testBinaryTreeLayerSearch(){
+        BinaryTreeSearch binaryTreeSearch = new BinaryTreeSearch();
+        System.out.println("show tree: ");
+        TreeOperation.show(root);
+        BinaryTreeLayerSearch.layerSearch(root);
+        assertTrue( true );
+    }
 }
