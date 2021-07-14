@@ -5,10 +5,9 @@ import Utils.TreeOperation;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-
 import static org.junit.Assert.assertTrue;
 
-public class BinaryTreeSearchTest {
+public class BinaryTreeMirrorTest {
     private static TreeNode root = null;
 
     @BeforeClass
@@ -28,11 +27,13 @@ public class BinaryTreeSearchTest {
     }
 
     @Test
-    public void testBinaryTreeSearch(){
-        BinaryTreeSearch binaryTreeSearch = new BinaryTreeSearch();
+    public void testBinaryTreeMirror(){
         System.out.println("show tree: ");
         TreeOperation.show(root);
-        binaryTreeSearch.preSearch(root);
+        TreeNode result = BinaryTreeMirror.Mirror(root);
+        System.out.println("show result: ");
+        TreeOperation.show(result);
         assertTrue( true );
     }
+
 }
