@@ -5,6 +5,10 @@ import Entity.TreeNode;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/*
+二叉树的层次遍历
+ */
+
 public class BinaryTreeLayerSearch {
     public static Queue<TreeNode> queue = new LinkedList<>();
     // 先序遍历
