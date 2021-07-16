@@ -15,7 +15,7 @@ public class FirstBadVersion {
     }
 
     public boolean isBadVersion(int i){
-        if (i<10){
+        if (i < 10){
             return true;
         }
         return false;
