@@ -88,4 +88,95 @@ public class ListOperation {
         }
         System.out.println("");
     }
+
+    /*
+    876. 链表的中间结点
+    给定一个头结点为 head 的非空单链表，返回链表的中间结点。
+
+    如果有两个中间结点，则返回第二个中间结点。
+
+    示例 1：
+
+    输入：[1,2,3,4,5]
+    输出：此列表中的结点 3 (序列化形式：[3,4,5])
+    返回的结点值为 3 。 (测评系统对该结点序列化表述是 [3,4,5])。
+    注意，我们返回了一个 ListNode 类型的对象 ans，这样：
+    ans.val = 3, ans.next.val = 4, ans.next.next.val = 5, 以及 ans.next.next.next = NULL.
+    示例 2：
+
+    输入：[1,2,3,4,5,6]
+    输出：此列表中的结点 4 (序列化形式：[4,5,6])
+    由于该列表有两个中间结点，值分别为 3 和 4，我们返回第二个结点。
+
+
+    提示：
+
+    给定链表的结点数介于 1 和 100 之间。
+     */
+
+    public ListNode middleNode(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+        while (fast != null && fast.next != null){
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        return slow;
+    }
+
+    /*
+    给你一个链表，删除链表的倒数第 n 个结点，并且返回链表的头结点。
+    进阶：你能尝试使用一趟扫描实现吗？
+
+    示例 1：
+    输入：head = [1,2,3,4,5], n = 2
+    输出：[1,2,3,5]
+    示例 2：
+
+    输入：head = [1], n = 1
+    输出：[]
+    示例 3：
+
+    输入：head = [1,2], n = 1
+    输出：[1]
+     
+    提示：
+    链表中结点的数目为 sz
+    1 <= sz <= 30
+    0 <= Node.val <= 100
+    1 <= n <= sz
+     */
+
+    public static ListNode removeNthFromEnd(ListNode head, int n) {
+        ListNode left = head;
+        ListNode right = head;
+
+        //节点为1个的情况
+        if (head.next == null && n == 1){
+            head = null;
+            return head;
+        }
+
+        for (int i=0; i<n; i++){
+            right = right.next;
+        }
+
+        //倒数第n个是head
+        if (right == null){
+            head = head.next;
+            return head;
+        }
+
+        while (right.next != null){
+            right = right.next;
+            left = left.next;
+        }
+
+        System.out.println(String.format("left value: %s", left.val));
+        System.out.println(String.format("right value: %s", right.val));
+
+        left.next = left.next.next;
+
+        return head;
+    }
 }

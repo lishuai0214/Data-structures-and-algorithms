@@ -88,4 +88,27 @@ public class ListOperationTest {
         ListOperation.FindFirstCommonNode(head1, head2);
 
     }
+
+    @Test
+    public void testFindFirstCommonNode1(){
+        ListNode head1 = new ListNode(0);
+        ListNode node2 = new ListNode(1);
+        head1.next = node2;
+//        ListNode node3 = new ListNode(2);
+//        node2.next = node3;
+//        ListNode node4 = new ListNode(3);
+//        node3.next = node4;
+//        ListNode node5 = new ListNode(4);
+//        node4.next = node5;
+//        ListNode node6 = new ListNode(5);
+//        node5.next = node6;
+//        ListNode node7 = new ListNode(6);
+//        node6.next = node7;
+
+        ListOperation.printList(head1);
+
+        ListOperation.removeNthFromEnd(head1, 2);
+
+        ListOperation.printList(head1);
+    }
 }

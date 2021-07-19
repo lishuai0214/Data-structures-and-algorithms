@@ -5,6 +5,56 @@ import java.util.List;
 
 public class BinarySearchArray {
 
+    public static int search(int[] nums, int target) {
+        int left = 0, right = nums.length-1;
+        while (left <= right){
+            int mid = (left + right)/2;
+            if (nums[mid] > target){
+                right = mid - 1;
+            }else if (nums[mid] < target){
+                left = mid + 1;
+            }else if (nums[mid] == target){
+                return mid;
+            }
+        }
+        return -1;
+    }
+
+    public static int search(int[] nums, int left, int right, int target) {
+        while (left <= right){
+            int mid = (left + right)/2;
+            if (nums[mid] > target){
+                return search(nums, left, mid- 1, target);
+            }else if (nums[mid] < target){
+                return search(nums, mid + 1, right, target);
+            }else if (nums[mid] == target){
+                return mid;
+            }
+        }
+        return -1;
+    }
+
+    public static int[] searchWithMiddleReturn(int[] nums, int left, int right, int target) {
+        int[] result = new int[2];
+        int mid = (left + right)/2;
+        while (left <= right){
+            if (nums[mid] > target){
+                return searchWithMiddleReturn(nums, left, mid- 1, target);
+            }else if (nums[mid] < target){
+                return searchWithMiddleReturn(nums, mid + 1, right, target);
+            }else if (nums[mid] == target){
+                result[0] = 1;
+                result[1] = mid;
+                return result;
+            }
+        }
+        if (result[1] == 0){
+            result[1] = mid;
+        }
+
+        return result;
+    }
+
     public static void main( String[] args )
     {
         List<Integer> c = new ArrayList<>();
