@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class TestTest {
@@ -122,4 +123,93 @@ public class TestTest {
             return false;
         }
     }
+
+    /*
+    7. 整数反转
+    给你一个 32 位的有符号整数 x ，返回将 x 中的数字部分反转后的结果。
+
+    如果反转后整数超过 32 位的有符号整数的范围 [−231,  231 − 1] ，就返回 0。
+
+    假设环境不允许存储 64 位整数（有符号或无符号）。
+
+
+    示例 1：
+
+    输入：x = 123
+    输出：321
+    示例 2：
+
+    输入：x = -123
+    输出：-321
+    示例 3：
+
+    输入：x = 120
+    输出：21
+    示例 4：
+
+    输入：x = 0
+    输出：0
+
+
+    提示：
+
+    -231 <= x <= 231 - 1
+     */
+
+
+    public int reverse(int x) {
+        if (x > Integer.MAX_VALUE || x < Integer.MIN_VALUE){
+            return 0;
+        }
+
+        int a = Math.abs(x);
+        int sign = 1;
+        if (x < 0){
+            sign = -1;
+        }else if (x == 0){
+            sign = 0;
+        }
+
+        int ressut = 0;
+        List<Integer> intnum = new LinkedList<>();
+        List<Integer> int10 = new LinkedList<>();
+        for (int i=1; i<=a && i<=1000000000; i=i*10){
+            System.out.println("i: " + i);
+            int a_3 = (a/i)%10;
+            System.out.println(String.format("a_3: %s", a_3));
+            int10.add(i);
+            intnum.add(a_3);
+        }
+
+        System.out.println("intnum: " + intnum);
+        System.out.println("int10: " + int10);
+
+        for (int j=0; j<intnum.size(); j++){
+            System.out.println(String.format("int10.get(j): %s, intnum.get(intnum.size() - j - 1): %s", int10.get(j), intnum.get(intnum.size() - j - 1)));
+            if (intnum.get(intnum.size() - j - 1) > 2 && int10.get(j) >= 1000000000){
+                return 0;
+            }else if (intnum.get(intnum.size() - j - 1) == 2){
+                 if (sign == 1 && ressut > 147483647){
+                     return 0;
+                 }else if (sign == -1 && ressut > 147483648){
+                     return 0;
+                 }
+            }
+            ressut = ressut + int10.get(j) * intnum.get(intnum.size() - j - 1);
+            System.out.println("ressut: " + ressut);
+        }
+
+        ressut = ressut * sign;
+
+        System.out.println("result: " + ressut);
+        return ressut;
+    }
+
+    @Test
+    public void testInt(){
+        int aa = 1534236469;
+        int result00 = reverse(aa);
+        System.out.println("result00: " + result00);
+    }
+
 }
