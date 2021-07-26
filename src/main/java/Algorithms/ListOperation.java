@@ -179,4 +179,35 @@ public class ListOperation {
 
         return head;
     }
+
+    public ListNode swapPairs(ListNode head) {
+        ListNode left = head;
+        ListNode right = left.next;
+        ListNode newHead = right;
+        ListNode preHead = left;
+        while (left != null && right != null){
+            System.out.println("left value0: " + left.val);
+            System.out.println("right value0: " + right.val);
+
+            left.next = right.next;
+            right.next = left;
+
+            preHead = left;
+
+            System.out.print("first head: ");
+            printList(newHead);
+            System.out.println("left value1: " + left.val);
+            System.out.println("right value1: " + right.val);
+            left = left.next;
+            right = left.next;
+
+            preHead.next = right;
+
+            System.out.print("second head: ");
+            printList(newHead);
+            System.out.println("left value2: " + left.val);
+            System.out.println("right value2: " + right.val);
+        }
+        return newHead;
+    }
 }

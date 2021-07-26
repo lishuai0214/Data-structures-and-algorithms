@@ -1,6 +1,7 @@
 package Coding;
 
 import Algorithms.CheckInclusion;
+import Algorithms.ClimbStairs;
 import Entity.TreeNode;
 import Utils.TreeOperation;
 import org.junit.BeforeClass;
@@ -212,4 +213,10 @@ public class TestTest {
         System.out.println("result00: " + result00);
     }
 
+    @Test
+    public void climbStairs(){
+        ClimbStairs climbStairs = new ClimbStairs();
+        int result11 = climbStairs.climbStairs(30);
+        System.out.println("result11: " + result11);
+    }
 }
