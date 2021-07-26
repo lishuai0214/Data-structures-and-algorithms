@@ -117,7 +117,109 @@ public class RomanAndInt {
     }
 
     public String intToRoman(int num) {
+        String result = "";
+        int n1000 = num/1000;
+        int m1000 = num%1000;
+        int n900 = m1000/900;
+        int m900 = m1000%900;
+        int n500 = m900/500;
+        int m500 = m900%500;
+        int n400 = m500/400;
+        int m400 = m500%400;
+        int n100 = m400/100;
+        int m100 = m400%100;
+        int n90 = m100/90;
+        int m90 = m100%90;
+        int n50 = m90/50;
+        int m50 = m90%50;
+        int n40 = m50/40;
+        int m40 = m50%40;
+        int n10 = m40/10;
+        int m10 = m40%10;
+        int n9 = m10/9;
+        int m9 = m10%9;
+        int n5 = m9/5;
+        int m5 = m9%5;
+        int n4 = m5/4;
+        int m4 = m5%4;
 
-        return "";
+        System.out.println("n1000: " + n1000);
+        System.out.println("m1000: " + m1000);
+        System.out.println("n900: " + n900);
+        System.out.println("m900: " + m900);
+        System.out.println("n500: " + n500);
+        System.out.println("m500: " + m500);
+        System.out.println("n400: " + n400);
+        System.out.println("m400: " + m400);
+        System.out.println("n100: " + n100);
+        System.out.println("m100: " + m100);
+        System.out.println("n90: " + n90);
+        System.out.println("m90: " + m90);
+        System.out.println("n50: " + n50);
+        System.out.println("m50: " + m50);
+        System.out.println("n40: " + n40);
+        System.out.println("m40: " + m40);
+        System.out.println("n10: " + n10);
+        System.out.println("m10: " + m10);
+        System.out.println("n9: " + n9);
+        System.out.println("m9: " + m9);
+        System.out.println("n5: " + n5);
+        System.out.println("m5: " + m5);
+        System.out.println("n4: " + n4);
+        System.out.println("m4: " + m4);
+
+        for (int i=0; i<n1000; i++){
+            result = result + "M";
+        }
+
+        for (int i=0; i<n900; i++){
+            result = result + "CM";
+        }
+
+        for (int i=0; i<n500; i++){
+            result = result + "D";
+        }
+
+        for (int i=0; i<n400; i++){
+            result = result + "CD";
+        }
+
+        for (int i=0; i<n100; i++){
+            result = result + "C";
+        }
+
+        for (int i=0; i<n90; i++){
+            result = result + "XC";
+        }
+
+        for (int i=0; i<n50; i++){
+            result = result + "L";
+        }
+
+        for (int i=0; i<n40; i++){
+            result = result + "XL";
+        }
+
+        for (int i=0; i<n10; i++){
+            result = result + "X";
+        }
+
+        for (int i=0; i<n9; i++){
+            result = result + "IX";
+        }
+
+        for (int i=0; i<n5; i++){
+            result = result + "V";
+        }
+
+        for (int i=0; i<n4; i++){
+            result = result + "IV";
+        }
+
+        for (int i=0; i<m4; i++){
+            result = result + "I";
+        }
+
+        return result;
     }
 }

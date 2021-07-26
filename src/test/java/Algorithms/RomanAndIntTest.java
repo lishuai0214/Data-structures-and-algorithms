@@ -44,4 +44,44 @@ public class RomanAndIntTest {
         System.out.println("romanToInt result: " + result);
         Assert.assertEquals(result, 1994);
     }
+
+    @Test
+    public void testIntToRoman1(){
+        RomanAndInt romanAndInt = new RomanAndInt();
+        String result = romanAndInt.intToRoman(1994);
+        System.out.println("intToRoman result: " + result);
+        Assert.assertEquals(result, "MCMXCIV");
+    }
+
+    @Test
+    public void testIntToRoman2(){
+        RomanAndInt romanAndInt = new RomanAndInt();
+        String result = romanAndInt.intToRoman(3);
+        System.out.println("intToRoman result: " + result);
+        Assert.assertEquals(result, "III");
+    }
+
+    @Test
+    public void testIntToRoman3(){
+        RomanAndInt romanAndInt = new RomanAndInt();
+        String result = romanAndInt.intToRoman(4);
+        System.out.println("intToRoman result: " + result);
+        Assert.assertEquals(result, "IV");
+    }
+
+    @Test
+    public void testIntToRoman4(){
+        RomanAndInt romanAndInt = new RomanAndInt();
+        String result = romanAndInt.intToRoman(9);
+        System.out.println("intToRoman result: " + result);
+        Assert.assertEquals(result, "IX");
+    }
+
+    @Test
+    public void testIntToRoman5(){
+        RomanAndInt romanAndInt = new RomanAndInt();
+        String result = romanAndInt.intToRoman(58);
+        System.out.println("intToRoman result: " + result);
+        Assert.assertEquals(result, "LVIII");
+    }
 }
