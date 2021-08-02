@@ -2,7 +2,9 @@ package Coding;
 
 import Algorithms.CheckInclusion;
 import Algorithms.ClimbStairs;
+import Entity.ListNode;
 import Entity.TreeNode;
+import Utils.ListOperation;
 import Utils.TreeOperation;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -248,5 +250,270 @@ public class TestTest {
         int result000 = removeDuplicates(nums);
         System.out.println("result000: " + result000);
         System.out.println(Arrays.toString(nums));
+    }
+
+    List<List<Integer>> resultListInteger = new LinkedList<>();
+
+
+    //未完成
+    public List<List<Integer>> subsets(int[] nums) {
+
+        for (int i=0; i<nums.length; i++){
+            List<Integer> list = new LinkedList<>();
+            for (int j=0; j<nums.length; j++){
+                if (j != i){
+                    list.add(nums[j]);
+                }
+            }
+            resultListInteger.add(list);
+
+            int[] intArray = new int[list.size()];
+            for (int k=0; k<list.size(); k++){
+                intArray[k] = list.get(k);
+            }
+
+            System.out.println("toString: " + Arrays.toString(intArray));
+        }
+
+
+        return resultListInteger;
+    }
+
+    @Test
+    public void subsets(){
+        int[] nums = {0,1,3,2};
+        List<List<Integer>> result111 = subsets(nums);
+        System.out.println(result111);
+    }
+
+    @Test
+    public void findSubstring(){
+        String s = "wordgoodgoodgoodbestword";
+        String[] words = {"word","good","best","word"};
+        findSubstring(s, words);
+    }
+
+    public List<Integer> findSubstring(String s, String[] words) {
+        String compareStr = "";
+        for (String word: words){
+            compareStr = compareStr + word;
+        }
+
+        String compareStr1 = sortString(compareStr);
+
+        for (int i=0; i<s.length()-compareStr1.length(); i++){
+            String subString = s.substring(i, compareStr1.length());
+            String subString1 = sortString(subString);
+            if (subString1.equals(compareStr1)){
+                for (int j=0; j<words.length; j++){
+
+                }
+            }
+        }
+
+        System.out.println(compareStr1);
+        return null;
+    }
+
+    public String sortString(String compareStr){
+        char[] compareStrArray = compareStr.toCharArray();
+        Arrays.sort(compareStrArray);
+        String compareStr1 = new String(compareStrArray);
+        return compareStr1;
+    }
+
+    @Test
+    public void strString(){
+        String haystack = "";
+        String needle = "";
+        int result111 = strStr(haystack, needle);
+        System.out.println("result111: " + result111);
+    }
+
+    public int strStr(String haystack, String needle) {
+        int needleLength = needle.length();
+        int haystackLength = haystack.length();
+        for (int i=0; i<=haystackLength-needleLength; i++){
+            String subString = haystack.substring(i, i+ needleLength);
+            if (subString.equals(needle)){
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+
+    @Test
+    public void letterCombinations(){
+        String digits = "";
+        List<String> listResult = letterCombinations(digits);
+        System.out.println(listResult);
+    }
+
+    public List<String> letterCombinations(String digits){
+        if (digits.length() == 0){
+            return new LinkedList<>();
+        }
+
+        char[] digitsArray = digits.toCharArray();
+
+        List<String> strList = new LinkedList<>();
+        conbination(digitsArray, 0, "", strList);
+        return strList;
+    }
+
+    public void conbination(char[] digitsArray, int i, String result, List<String> strList){
+
+        if (i > digitsArray.length-1){
+            strList.add(result);
+            return;
+        }
+
+        char c = digitsArray[i];
+
+        i = i + 1;
+
+        if (c == '2'){
+            char[] abc = {'a', 'b', 'c'};
+            for (char cc: abc) {
+                conbination(digitsArray, i, result + cc, strList);
+            }
+        }else if (c == '3'){
+            char[] abc = {'d', 'e', 'f'};
+            for (char cc: abc) {
+                conbination(digitsArray, i, result + cc, strList);
+            }
+        }else if (c == '4'){
+            char[] abc = {'g', 'h', 'i'};
+            for (char cc: abc) {
+                conbination(digitsArray, i, result + cc, strList);
+            }
+        }else if (c == '5'){
+            char[] abc = {'j', 'k', 'l'};
+            for (char cc: abc) {
+                conbination(digitsArray, i, result + cc, strList);
+            }
+        }else if (c == '6'){
+            char[] abc = {'m', 'n', 'o'};
+            for (char cc: abc) {
+                conbination(digitsArray, i, result + cc, strList);
+            }
+        }else if (c == '7'){
+            char[] abc = {'p', 'q', 'r', 's'};
+            for (char cc: abc) {
+                conbination(digitsArray, i, result + cc, strList);
+            }
+        }else if (c == '8'){
+            char[] abc = {'t', 'u', 'v'};
+            for (char cc: abc) {
+                conbination(digitsArray, i, result + cc, strList);
+            }
+        }else if (c == '9'){
+            char[] abc = {'w', 'x', 'y', 'z'};
+            for (char cc: abc) {
+                conbination(digitsArray, i, result + cc, strList);
+            }
+        }
+    }
+
+    public int firstMissingPositive(int[] nums) {
+        int[] arrayArray = new int[Integer.MAX_VALUE];
+        for (int num: nums){
+            if (num > 0){
+                arrayArray[num] = 1;
+            }
+        }
+
+        for (int i=1; i<arrayArray.length; i++){
+            if (arrayArray[i] == 0){
+                return i;
+            }
+        }
+        return 0;
+    }
+
+    @Test
+    public void firstMissingPositive(){
+        int[] nums = {7,8,9,11,12};
+        int result222 = firstMissingPositive(nums);
+        System.out.println("result222: " + result222);
+    }
+
+    @Test
+    public void mergeTwoLists(){
+        ListNode list00 = new ListNode(1);
+        ListNode list01 = new ListNode(2);
+        ListNode list02 = new ListNode(4);
+        list00.next = list01;
+        list01.next = list02;
+
+
+        ListNode l20 = new ListNode(10);
+        ListNode l21 = new ListNode(30);
+        ListNode l22 = new ListNode(40);
+        l20.next = l21;
+        l21.next = l22;
+
+        ListNode newHead = mergeTwoLists(list00, l20);
+
+        System.out.print("l10: ");
+        ListOperation.printList(list00);
+        System.out.print("l20: ");
+        ListOperation.printList(l20);
+        System.out.print("newHead: ");
+        ListOperation.printList(newHead);
+    }
+
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        List<ListNode> listNodes1 = new LinkedList<>();
+        List<ListNode> listNodes2 = new LinkedList<>();
+
+        ListNode newHead = null;
+
+        ListNode p1 = l1;
+        while (p1 != null){
+            listNodes1.add(p1);
+            p1 = p1.next;
+        }
+
+        ListNode p2 = l2;
+        while (p2 != null){
+            listNodes2.add(p2);
+            p2 = p2.next;
+        }
+
+        int i=0, j=0;
+
+        ListNode tail = null;
+        while (i<listNodes1.size() || j<listNodes2.size()){
+
+            if (listNodes1.get(i).val > listNodes2.get(j).val){
+                if (newHead == null){
+                    newHead = listNodes2.get(i);
+                    tail = newHead;
+                }else {
+                    tail.next = listNodes2.get(i);
+                    tail = tail.next;
+                }
+
+                if (j<listNodes1.size()-1){
+                    j++;
+                }
+            }else {
+                if (newHead == null){
+                    newHead = listNodes1.get(i);
+                    tail = newHead;
+                }else {
+                    tail.next = listNodes1.get(i);
+                    tail = tail.next;
+                }
+                if (i<listNodes2.size()-1){
+                    i++;
+                }
+            }
+        }
+
+        return newHead;
     }
 }
