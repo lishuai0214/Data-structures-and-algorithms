@@ -455,7 +455,7 @@ public class TestTest {
         l20.next = l21;
         l21.next = l22;
 
-        ListNode newHead = mergeTwoLists(list00, l20);
+        ListNode newHead = mergeTwoLists1(list00, l20);
 
         System.out.print("l10: ");
         ListOperation.printList(list00);
@@ -463,6 +463,33 @@ public class TestTest {
         ListOperation.printList(l20);
         System.out.print("newHead: ");
         ListOperation.printList(newHead);
+    }
+
+
+    //未完成
+    public ListNode mergeTwoLists1(ListNode l1, ListNode l2) {
+        ListNode newHead = l2;
+
+        ListNode temp1 = l1;
+        ListNode temp2 = l2;
+
+        while (l1 != null || temp2 !=null){
+            if (l1.val < temp2.val){
+                if (temp2 == l2){
+                    ListNode tmp = temp1.next;
+                    l1.next = temp2;
+                    newHead = l1;
+                }else {
+
+                }
+                temp1 = l1.next;
+                temp1.next = temp2;
+                newHead = l1;
+            }
+            l1 = l1.next;
+        }
+
+        return null;
     }
 
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
